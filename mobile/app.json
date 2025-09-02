@@ -1,0 +1,50 @@
+{
+  "name": "DEAR",
+  "displayName": "DEAR - Health Transformation",
+  "description": "AI-powered health and wellness transformation platform",
+  "version": "1.0.0",
+  "buildNumber": "1",
+  "bundleId": "com.dear.health",
+  "packageName": "com.dear.health",
+  "orientation": "portrait",
+  "icon": "./assets/icon.png",
+  "splash": {
+    "image": "./assets/splash.png",
+    "resizeMode": "contain",
+    "backgroundColor": "#059669"
+  },
+  "platforms": ["ios", "android"],
+  "ios": {
+    "bundleIdentifier": "com.dear.health",
+    "buildNumber": "1",
+    "supportsTablet": true,
+    "infoPlist": {
+      "NSCameraUsageDescription": "DEAR needs camera access to analyze your transformation photos and sports performance videos.",
+      "NSPhotoLibraryUsageDescription": "DEAR needs photo library access to save and manage your transformation photos.",
+      "NSMicrophoneUsageDescription": "DEAR needs microphone access for video recording and voice notes.",
+      "NSLocationWhenInUseUsageDescription": "DEAR uses location to find nearby healthcare providers and fitness facilities."
+    }
+  },
+  "android": {
+    "package": "com.dear.health",
+    "versionCode": 1,
+    "permissions": [
+      "CAMERA",
+      "RECORD_AUDIO",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_EXTERNAL_STORAGE",
+      "ACCESS_FINE_LOCATION",
+      "ACCESS_COARSE_LOCATION",
+      "INTERNET",
+      "ACCESS_NETWORK_STATE"
+    ],
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#059669"
+    }
+  },
+  "notification": {
+    "icon": "./assets/notification-icon.png",
+    "color": "#059669"
+  }
+}
