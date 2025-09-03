@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { getSession } from "@/lib/auth"
 import { DatabaseService } from "@/lib/database"
+export const runtime = "nodejs";
 
 export async function GET() {
   try {
@@ -29,5 +30,3 @@ export async function GET() {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
-
-export const runtime = "nodejs";

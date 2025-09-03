@@ -6,6 +6,7 @@ import { ValidationError, asyncHandler } from "@/lib/error-handling"
 import { rateLimiter, rateLimitConfigs } from "@/lib/rate-limiting"
 import { logger } from "@/lib/logging"
 import { SecurityUtils, securityHeaders } from "@/lib/security"
+export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   return asyncHandler(async (req: NextRequest) => {
@@ -74,6 +75,3 @@ export async function POST(request: NextRequest) {
     return response
   })(request)
 }
-
-
-export const runtime = "nodejs";

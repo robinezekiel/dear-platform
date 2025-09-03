@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { DatabaseService } from "@/lib/database"
 import { verifyPassword, createSession } from "@/lib/auth"
 import { z } from "zod"
+export const runtime = "nodejs";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -45,5 +46,3 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
-
-export const runtime = "nodejs";

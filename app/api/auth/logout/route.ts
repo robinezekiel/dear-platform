@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { deleteSession } from "@/lib/auth"
+export const runtime = "nodejs";
 
 export async function POST() {
   try {
@@ -10,4 +11,3 @@ export async function POST() {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }
-export const runtime = "nodejs";
