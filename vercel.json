@@ -5,9 +5,9 @@
   "installCommand": "npm install --legacy-peer-deps",
   "devCommand": "npm run dev",
   "env": {
-    "DATABASE_URL": "placeholder",
-    "JWT_SECRET": "@JWT_SECRET",
-    "OPENAI_API_KEY": "@OPENAI_API_KEY",
+   "DATABASE_URL": "placeholder",
+  "JWT_SECRET": "placeholder",
+  "OPENAI_API_KEY": "placeholder",
     "ANTHROPIC_API_KEY": "@anthropic_api_key",
     "STRIPE_SECRET_KEY": "@stripe_secret_key",
     "STRIPE_PUBLISHABLE_KEY": "@stripe_publishable_key",
