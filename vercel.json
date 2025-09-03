@@ -7,13 +7,7 @@
   "env": {
    "DATABASE_URL": "placeholder",
   "JWT_SECRET": "placeholder",
-  "OPENAI_API_KEY": "placeholder",
-    "ANTHROPIC_API_KEY": "@anthropic_api_key",
-    "STRIPE_SECRET_KEY": "@stripe_secret_key",
-    "STRIPE_PUBLISHABLE_KEY": "@stripe_publishable_key",
-    "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
-    "STRIPE_PREMIUM_PRICE_ID": "@stripe_premium_price_id",
-    "STRIPE_PRO_PRICE_ID": "@stripe_pro_price_id"
+  "OPENAI_API_KEY": "placeholder"
   },
   "functions": {
     "app/api/**/*.ts": {
