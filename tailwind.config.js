@@ -6,7 +6,12 @@ module.exports = {
     "./pages/**/*.{ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        ring: "hsl(var(--ring))",
+      },
+    },
   },
   plugins: [],
-}
+};

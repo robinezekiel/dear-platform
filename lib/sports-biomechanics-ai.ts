@@ -1,7 +1,7 @@
 import { OpenAI } from "openai"
 // ❌ Don't use tfjs-node on Vercel (not supported)
-import * as tf from "@tensorflow/tfjs"   // ✅ works in browser/serverless
-import * as posenet from "@tensorflow-models/posenet"
+import * as tf from "@tensorflow/tfjs";
+import * as posenet from "@tensorflow-models/posenet";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -879,6 +879,22 @@ export class SportsBiomechanicsAI {
 
     return feedback
   }
+}
+
+export async function loadPoseNet() {
+  const net = await posenet.load();
+  return net;
+}
+
+/**
+ * Example: Analyze an image (dummy placeholder — you can extend later)
+ */
+export async function analyzeImage(imageElement: HTMLImageElement) {
+  const net = await loadPoseNet();
+  const pose = await net.estimateSinglePose(imageElement, {
+    flipHorizontal: false,
+  });
+  return pose;
 }
 
 export const sportsBiomechanicsAI = new SportsBiomechanicsAI()
