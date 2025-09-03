@@ -163,26 +163,33 @@ export class SportsBiomechanicsAI {
     }
 
     try {
-      const tensor = tf.node.decodeImage(videoBuffer, 3)
-      const poses = await this.poseNetModel.estimatePoses(tensor, {
-        flipHorizontal: false,
-        maxDetections: 1,
-        scoreThreshold: 0.5,
-        nmsRadius: 20,
-      })
+      // Use tf.node only if available (Node.js with tfjs-node). Not supported on Vercel Edge/Browser.
+      const tfAny = tf as any
+      if (tfAny.node?.decodeImage) {
+        const tensor = tfAny.node.decodeImage(videoBuffer, 3)
+        const poses = await this.poseNetModel.estimatePoses(tensor, {
+          flipHorizontal: false,
+          maxDetections: 1,
+          scoreThreshold: 0.5,
+          nmsRadius: 20,
+        })
 
-      tensor.dispose()
+        tensor.dispose()
 
-      return poses.map((pose: any, index: number) => ({
-        timestamp: index * 0.033, // 30fps
-        keyPoints: pose.keypoints.map((kp: any) => ({
-          name: kp.part,
-          x: kp.position.x,
-          y: kp.position.y,
-          confidence: kp.score,
-        })),
-        confidence: pose.score,
-      }))
+        return poses.map((pose: any, index: number) => ({
+          timestamp: index * 0.033, // 30fps
+          keyPoints: pose.keypoints.map((kp: any) => ({
+            name: kp.part,
+            x: kp.position.x,
+            y: kp.position.y,
+            confidence: kp.score,
+          })),
+          confidence: pose.score,
+        }))
+      }
+
+      // If tf.node is not available (browser/serverless), fall back to mock data
+      throw new Error("tf.node.decodeImage is not available in this runtime")
     } catch (error) {
       console.error("[v0] Video analysis error:", error)
       // Fallback to mock data for development
@@ -895,6 +902,13 @@ export async function analyzeImage(imageElement: HTMLImageElement) {
     flipHorizontal: false,
   });
   return pose;
+}
+
+// Client-safe wrapper similar to user's example. Accepts image/video/canvas elements.
+export async function analyzePose(image: HTMLImageElement | HTMLVideoElement | HTMLCanvasElement) {
+  const net = await loadPoseNet()
+  const pose = await net.estimateSinglePose(image, { flipHorizontal: false })
+  return pose
 }
 
 export const sportsBiomechanicsAI = new SportsBiomechanicsAI()

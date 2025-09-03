@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         border: "hsl(var(--border))",
         ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",  // ✅ add this
+        foreground: "hsl(var(--foreground))",  // ✅ add this
       },
     },
   },
