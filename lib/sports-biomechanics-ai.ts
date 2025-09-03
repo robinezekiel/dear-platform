@@ -1,5 +1,7 @@
 import { OpenAI } from "openai"
-import * as tf from "@tensorflow/tfjs-node"
+// ❌ Don't use tfjs-node on Vercel (not supported)
+// import * as tf from "@tensorflow/tfjs-node"
+import * as tf from "@tensorflow/tfjs"   // ✅ works in browser/serverless
 import * as posenet from "@tensorflow-models/posenet"
 
 const openai = new OpenAI({
