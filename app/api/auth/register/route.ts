@@ -74,3 +74,6 @@ export async function POST(request: NextRequest) {
     return response
   })(request)
 }
+
+
+export const runtime = "nodejs";
