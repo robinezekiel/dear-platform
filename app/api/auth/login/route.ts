@@ -1,8 +1,9 @@
+export const runtime = "nodejs";
 import { type NextRequest, NextResponse } from "next/server"
 import { DatabaseService } from "@/lib/database"
 import { verifyPassword, createSession } from "@/lib/auth"
 import { z } from "zod"
-export const runtime = "nodejs";
+
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),

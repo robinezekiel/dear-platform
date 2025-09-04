@@ -1,7 +1,8 @@
+export const runtime = "nodejs";
 import { NextResponse } from "next/server"
 import { getSession } from "@/lib/auth"
 import { DatabaseService } from "@/lib/database"
-export const runtime = "nodejs";
+
 
 export async function GET() {
   try {

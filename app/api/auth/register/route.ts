@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import { type NextRequest, NextResponse } from "next/server"
 import { DatabaseService } from "@/lib/database"
 import { hashPassword, createSession } from "@/lib/auth"
@@ -6,7 +7,7 @@ import { ValidationError, asyncHandler } from "@/lib/error-handling"
 import { rateLimiter, rateLimitConfigs } from "@/lib/rate-limiting"
 import { logger } from "@/lib/logging"
 import { SecurityUtils, securityHeaders } from "@/lib/security"
-export const runtime = "nodejs";
+
 
 export async function POST(request: NextRequest) {
   return asyncHandler(async (req: NextRequest) => {
