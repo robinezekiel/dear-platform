@@ -5,7 +5,6 @@
   "installCommand": "npm install --legacy-peer-deps",
   "devCommand": "npm run dev",
   "env": {
-   "DATABASE_URL": "placeholder",
   "JWT_SECRET": "placeholder",
   "OPENAI_API_KEY": "placeholder"
   },
